@@ -73,11 +73,11 @@ Você deve ter algumas dependências para executar o programa:
 ### Siga estas etapas (dentro de um terminal):
 1. Clone o repositório:
     ```shell
-    SSH -> $ git clone 
+    SSH -> $ git clone git@github.com:AnimisAle/API-REST-NODE-TEST.git
     ```
     | |
     ```shell
-    HTTPS -> $ git clone 
+    HTTPS -> $ git clone https://github.com/AnimisAle/API-REST-NODE-TEST.git
     ```
 2. Entrar na pasta do projeto:
     ```shell
@@ -215,8 +215,36 @@ A configuração do bancco de dados acompanhado pelo projeto:
     ```
 2. Acessar o localhost:
     ```http
-    http://localhost:9090
+    http://localhost:9090/aluno
     ```
+
+## Executando o projeto com os teste
+1. Executar o projeto:
+    ```shell
+    $ npm run dev
+    ```
+
+    | |
+
+    ```shell
+    $ yarn dev
+    ```
+2. Executar o teste:
+    ```shell
+    $ npm run test
+    ```
+
+    | |
+
+    ```shell
+    $ yarn test 
+    ```
+3. Acessar o localhost:
+    ```http
+    http://localhost:9090/aluno
+    ```
+
+
 ## Autor
 
 | [<img src="https://user-images.githubusercontent.com/60360540/147608621-232512b1-363f-4812-8f69-95c189e1cbc7.jpg" width=115><br><sub>@felipe-fe</sub>](https://www.linkedin.com/in/felipe-fe/) |
