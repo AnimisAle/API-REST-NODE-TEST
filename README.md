@@ -3,7 +3,7 @@
 ## Sobre o Projeto
 
 <p>
-    O projeto aluno apresenta uma API Rest utilizando o CRUD que ordena de forma crescente e decrescente. Utilizando o padrão de projeto Singleton e no banco de dados prefini o sql injection.
+    O projeto aluno apresenta uma API Rest utilizando o CRUD que ordena de forma crescente e decrescente, validando os atributos de cada objeto. Utilizando o padrão de projeto Singleton e no banco de dados previne o sql injection.
 </p><br>
 
 ## Sistema Operacional
