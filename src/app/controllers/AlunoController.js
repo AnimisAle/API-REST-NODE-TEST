@@ -84,7 +84,6 @@ class AlunoController {
             return response.status(404).json({ error: 'ERROR: o telefone é obrigatório.' })
         }
 
-         
 
         const alunoExiste = await AlunoRepository.buscarPorMatricula(matricula)
 
@@ -102,8 +101,6 @@ class AlunoController {
     async atualizar(request, response) {
         const { id } = request.params
         const { matricula, nome, email, sexo, telefone } = request.body
-
-        
 
         const alunoExiste = await AlunoRepository.buscarPorId(id)
 

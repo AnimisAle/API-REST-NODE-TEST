@@ -30,6 +30,106 @@ describe("POST /aluno ", () => {
         });
     });
 
+    test("Testa a mensagem de erro esperada e se a matricula do aluno não é numerica .", () => {
+
+        let aluno = {
+            matricula: "20191011",
+            nome: "Felipe",
+            email: "felipe@email.com",
+            sexo: "M",
+            telefone: "(62) 9 xxxx-xxxx"
+        }
+
+        expect(typeof(aluno.matricula)).toEqual("string")
+
+        return request.post('/aluno')
+        .send(aluno)
+        .then(res => {
+
+            expect(res.body).toEqual({"error": "ERROR: matricula já cadastrada!"})
+        });
+    });
+
+    test("Testa a mensagem de erro esperada e se a nome do aluno não é numerica .", () => {
+
+        let aluno = {
+            matricula: "20191011",
+            nome: 99999,
+            email: "felipe@email.com",
+            sexo: "M",
+            telefone: "(62) 9 xxxx-xxxx"
+        }
+
+        expect(typeof(aluno.nome)).toEqual("number")
+
+        return request.post('/aluno')
+        .send(aluno)
+        .then(res => {
+
+            expect(res.body).toEqual({"error": "ERROR: O nome deve ser uma string!"})
+        });
+    });
+
+    test("Testa a mensagem de erro esperada e se o email do aluno não é numerica .", () => {
+
+        let aluno = {
+            matricula: "20191011",
+            nome: "Felipe",
+            email: 99999,
+            sexo: "M",
+            telefone: "(62) 9 xxxx-xxxx"
+        }
+
+        expect(typeof(aluno.nome)).toEqual("string")
+
+        return request.post('/aluno')
+        .send(aluno)
+        .then(res => {
+
+            expect(res.body).toEqual({"error": "ERROR: O email deve ser uma string!"})
+        });
+    });
+
+    test("Testa a mensagem de erro esperada e se o sexo do aluno não é numerico.", () => {
+
+        let aluno = {
+            matricula: "20191011",
+            nome: "Felipe",
+            email: "felipe@email.com",
+            sexo: 99,
+            telefone: "(62) 9 xxxx-xxxx"
+        }
+
+        expect(typeof(aluno.nome)).toEqual("string")
+
+        return request.post('/aluno')
+        .send(aluno)
+        .then(res => {
+
+            expect(res.body).toEqual({"error": "ERROR: O sexo deve ser uma string!"})
+        });
+    });
+
+    test("Testa a mensagem de erro esperada e se o telefone do aluno não é numerico.", () => {
+
+        let aluno = {
+            matricula: "20191011",
+            nome: "Felipe",
+            email: "felipe@email.com",
+            sexo: "M",
+            telefone: 556
+        }
+
+        expect(typeof(aluno.nome)).toEqual("string")
+
+        return request.post('/aluno')
+        .send(aluno)
+        .then(res => {
+
+            expect(res.body).toEqual({"error": "ERROR: O telefone deve ser uma string!"})
+        });
+    });
+
     test("Deve cadastrar quando o nome for uma string", () => {
 
         let aluno = {
@@ -303,21 +403,21 @@ describe("PUT /aluno", () => {
     test("Deve atualizar todos os dados", () => {
 
         let aluno = {
-            matricula: "20191000",
+            matricula: 2015500,
             nome: "Felipe",
             email: "felipe@email.com",
             sexo: "M",
             telefone: "(62) 9 xxxx-xxxx"
         }
 
-        return request.put(`/aluno/${IDs[2]}`)
+        return request.put(`/aluno/${IDs[1]}`)
         .send(aluno)
         .then(res => {
 
             const { nome, email, sexo, telefone, matricula } = res.body
 
             expect(res.statusCode).toEqual(200)
-            expect(parseInt(matricula)).toEqual(parseInt("20191000"))
+            expect(parseInt(matricula)).toEqual(parseInt("2015500"))
             expect(nome).toEqual("Felipe")
             expect(email).toEqual("felipe@email.com")
             expect(sexo).toEqual("M")
@@ -519,15 +619,6 @@ describe("DELETE /aluno ", () => {
 
     test("Deve deletar um usuário com status 200", () => {
 
-        return request.delete(`/aluno/${IDs[2]}`)
-
-        .then(res => {
-            expect(res.statusCode).toEqual(204)
-        });
-    });
-
-    test("Deve deletar um usuário com status 200", () => {
-
         return request.delete(`/aluno/${IDs[3]}`)
 
         .then(res => {
@@ -556,13 +647,13 @@ describe("DELETE /aluno ", () => {
 
 describe("GET /aluno", () => {
 
-    test("Deve retornar 0 alunos", () => {
+    test("Deve retornar 2 alunos", () => {
 
         return request.get(`/aluno`)
 
         .then(res => {
 
-            expect(parseInt(res.body.length)).toEqual(3)
+            expect(parseInt(res.body.length)).toEqual(2)
         });
     });
 });
