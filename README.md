@@ -81,7 +81,7 @@ Você deve ter algumas dependências para executar o programa:
     ```
 2. Entrar na pasta do projeto:
     ```shell
-    $ cd crud-node
+    $ cd API-REST-NODE-TEST
     ```
 3. Instale às dependências:
     ```shell
